@@ -24,10 +24,12 @@ if not DEEPSEEK_API_KEY:
 
 bot = telebot.TeleBot(TELEGRAM_TOKEN)
 
+from openai import OpenAI
+
+# Initialize the DeepSeek client - SIMPLIFIED VERSION
 client = OpenAI(
     api_key=DEEPSEEK_API_KEY,
     base_url="https://api.deepseek.com"
-    # Removed the 'proxies' parameter
 )
 
 user_history = {}
