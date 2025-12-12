@@ -52,8 +52,7 @@ def reply_all(message):
         reply = response.choices[0].message.content
 
         # Lưu lại phản hồi để giữ ngữ cảnh cho lần sau
-        user_history[user_id].append({"role": "assistant", content: reply)
-
+user_history[user_id].append({"role": "assistant", "content": reply})
         # Giữ lịch sử gọn (tối đa ~40 tin gần nhất)
         if len(user_history[user_id]) > 80:  # user + assistant nên để 80 thay vì 40
             user_history[user_id] = user_history[user_id][-80:]
