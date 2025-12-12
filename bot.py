@@ -17,10 +17,13 @@ if not DEEPSEEK_API_KEY:
 
 bot = telebot.TeleBot(TELEGRAM_TOKEN)
 
+import httpx
+from openai import OpenAI
+
 client = OpenAI(
     api_key=DEEPSEEK_API_KEY,
-    base_url="https://api.deepseek.com",
-    http_client=httpx.Client(timeout=60.0),
+    base_url="https://api.deepseek.com/v1",  # khuyên thêm /v1 cho chắc
+    http_client=httpx.Client(timeout=httpx.Timeout(60.0, connect=10.0)),
 )
 
 SYSTEM = {"role": "system", "content": "Reply in plain text. Do not use Markdown formatting."}
